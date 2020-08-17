@@ -66,10 +66,10 @@ onAfterClone:
 onBeforeSetCloudletCount[cp]:
   - if ('${fn.compareEngine(1.8.1):}' < 0 || ${nodes.cp.master.flexibleCloudlets} < ${event.params.flexibleCloudlets}):
       if (nodes.das):
-        cmd[${nodes.cp.master.id}]: touch $STACK_PATH/.skiprestartall
+        cmd[${nodes.cp.master.id}]: touch $STACK_PATH/.skiprestart
   - else:
       if (${nodes.cp.master.flexibleCloudlets} > ${event.params.flexibleCloudlets} && (nodes.das)):
-        cmd[${nodes.cp.master.id}]: touch $STACK_PATH/.skiprestartall
+        cmd[${nodes.cp.master.id}]: touch $STACK_PATH/.skiprestart
     
 onAfterSetCloudletCount[cp]:
   if (nodes.das):
